@@ -3,8 +3,12 @@ import schedule
 import threading
 import time
 from bot_logic import parol, flip_coin, knb_game, play_knb_round
+from dotenv import load_dotenv
+import os
 
-token = "пиши сюда свой токен"
+load_dotenv()
+
+token = os.getenv("BOT_TOKEN")
 bot = telebot.TeleBot(token)
 
 # Словарь для хранения игр пользователей
