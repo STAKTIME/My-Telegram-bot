@@ -1,13 +1,15 @@
 import random
+import string
+import numpy as np
 
 def parol(pass_length):
     """
     Генератор паролей
     """
-    elements = "+-/*!&$#?=@<>123456789"
+    elements = string.ascii_letters + string.digits + string.punctuation
     password = ""
     for i in range(pass_length):
-        password += random.choice(elements)
+        password += np.random.choice(elements)
     return password
 
 def flip_coin():
@@ -43,13 +45,7 @@ def play_knb_round(game_state, player_choice):
     player = player_choice.lower()
     
     # Выбор компьютера
-    comp_choice = random.randint(1, 3)
-    if comp_choice == 1:
-        comp = "камень"
-    elif comp_choice == 2:
-        comp = "ножницы"
-    else:
-        comp = "бумага"
+    comp = random.choice(valid_choices)
     
     # Определение победителя раунда
     if player == comp:
